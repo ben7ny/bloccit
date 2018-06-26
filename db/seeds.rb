@@ -30,6 +30,10 @@ Post.find_or_create_by(title: "My new title", body:"My new body")
 puts "#{Post.count}"
 
 
+puts "#{Post.count}"
+Post.find_or_create_by(title: "Test the title", body:"I'm testing to see if I get a unique body")
+puts "#{Post.count}"
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
