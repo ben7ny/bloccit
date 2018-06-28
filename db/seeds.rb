@@ -25,6 +25,14 @@ posts = Post.all
   )
 end
 
+100.times do
+  Question.create!(
+    title: posts.sample,
+    body: RandomData.random_paragraph,
+    resolved: false
+  )
+end
+
 puts "#{Post.count}"
 Post.find_or_create_by(title: "My new title", body:"My new body")
 puts "#{Post.count}"
