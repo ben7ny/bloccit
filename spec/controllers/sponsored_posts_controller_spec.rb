@@ -62,52 +62,52 @@ let(:my_sponsored_post) { my_topic.sponsored_posts.create!(title: RandomData.ran
     end
   end
 
-  # describe "SPONSORED POST create" do
-  #   it "increases the number of Sponsored Post by 1" do
-  #     expect{ sponsored_post :create, params: { topic_id: my_topic.id, sponsored_post : { title: RandomData.random_sentence, body: RandomData.random_paragraph, price: 99 } } }.to change(SponsoredPost,:count).by(1)
-  #   end
-  #
-  #   it "assigns the new post to @sponsored_post" do
-  #     expect{ sponsored_post :create, params: { topic_id: my_topic.id, sponsored_post : { title: RandomData.random_sentence, body: RandomData.random_paragraph, price: 99 } } }.to change(SponsoredPost,:count).by(1)
-  #     expect(assigns(:post)).to eq SponsoredPost.last
-  #   end
-  #
-  #   it "redirects to the new post" do
-  #     expect{ sponsored_post :create, params: { topic_id: my_topic.id, sponsored_post : { title: RandomData.random_sentence, body: RandomData.random_paragraph, price: 99 } } }.to change(SponsoredPost,:count).by(1)
-  #     expect(response).to redirect_to [my_sponsored_post, SponsoredPost.last]
-  #   end
-  # end
-  #
-  #
-  describe "PUT update" do
-    it "updates post with expected attributes" do
-      new_title = RandomData.random_sentence
-      new_body = RandomData.random_paragraph
-      new_price = rand(50..200)
-      put :update, params: { topic_id: my_topic.id, id: my_sponsored_post.id, post: {title: new_title, body: new_body, price: new_price } }
-
-      updated_sponsored_post = assigns(:sponsored_post)
-      expect(updated_sponsored_post.id).to eq my_sponsored_post.id
-      expect(updated_sponsored_post.title).to eq new_title
-      expect(updated_sponsored_post.body).to eq new_body
-      expect(updated_sponsored_post.price).to eq new_price
+  describe "SPONSORED POST create" do
+    it "increases the number of Sponsored Post by 1" do
+      expect{ post :create, params: { topic_id: my_topic.id, sponsored_post: { title: RandomData.random_sentence, body: RandomData.random_paragraph, price: 99 } } }.to change(SponsoredPost,:count).by(1)
     end
 
-    it "redirects to the updated sponsored post" do
-      new_title = RandomData.random_sentence
-      new_body = RandomData.random_paragraph
-      new_price = rand(50..200)
+    it "assigns the new post to @sponsored_post" do
+      expect{ post :create, params: { topic_id: my_topic.id, sponsored_post: { title: RandomData.random_sentence, body: RandomData.random_paragraph, price: 99 } } }.to change(SponsoredPost,:count).by(1)
+      expect(assigns(:sponsored_post)).to eq SponsoredPost.last
+    end
 
-      put :update, params: { topic_id: my_topic.id, id: my_sponsored_post.id, post: {title: new_title, body: new_body, price: new_price } }
-      expect(response).to redirect_to [my_topic, my_sponsored_post]
+    it "redirects to the new post" do
+      expect{ post :create, params: { topic_id: my_topic.id, sponsored_post: { title: RandomData.random_sentence, body: RandomData.random_paragraph, price: 99 } } }.to change(SponsoredPost,:count).by(1)
+      expect(response).to redirect_to [my_topic, SponsoredPost.last]
     end
   end
+
+
+  # describe "PUT update" do
+  #   it "updates post with expected attributes" do
+  #     new_title = RandomData.random_sentence
+  #     new_body = RandomData.random_paragraph
+  #     new_price = rand(50..200)
+  #     put :update, params: { topic_id: my_topic.id, id: my_sponsored_post.id, post: {title: new_title, body: new_body, price: new_price } }
+  #
+  #     updated_sponsored_post = assigns(:sponsored_post)
+  #     expect(updated_sponsored_post.id).to eq my_sponsored_post.id
+  #     expect(updated_sponsored_post.title).to eq new_title
+  #     expect(updated_sponsored_post.body).to eq new_body
+  #     expect(updated_sponsored_post.price).to eq new_price
+  #   end
+  #
+  #   it "redirects to the updated sponsored post" do
+  #     new_title = RandomData.random_sentence
+  #     new_body = RandomData.random_paragraph
+  #     new_price = rand(50..200)
+  #
+  #     put :update, params: { topic_id: my_topic.id, id: my_sponsored_post.id, post: {title: new_title, body: new_body, price: new_price } }
+  #     expect(response).to redirect_to [my_topic, my_sponsored_post]
+  #   end
+  # end
 
 
   # describe "DELETE destroy" do
   #    it "deletes the sponsored post" do
   #      delete :destroy, params: {topic_id: my_topic.id, id: my_sponsored_post.id  }
-  #      count = SponsoredPost.where({id: my_sponsored_post.id).size
+  #      count = SponsoredPost.where({id: my_sponsored_post.id}).size
   #      expect(count).to eq 0
   #    end
   #
