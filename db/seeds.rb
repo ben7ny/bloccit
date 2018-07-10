@@ -32,7 +32,8 @@ require 'random_data'
   Post.create!(
     user:   users.sample,
     title:  RandomData.random_sentence,
-    body:   RandomData.random_paragraph
+    body:   RandomData.random_paragraph,
+    topic: topics.sample
   )
 end
 posts = Post.all
@@ -46,10 +47,18 @@ posts = Post.all
 end
 
 
-user = User.first
-user.update_attributes!(
-  email: 'benjason777@gmail.com',
-  password: 'helloworld'
+
+ admin = User.create!(
+   name:     'Admin User',
+   email:    'admin@example.com',
+   password: 'helloworld',
+   role:     'admin'
+ )
+
+ member = User.create!(
+   name:     'Member User',
+   email:    'member@example.com',
+   password: 'helloworld'
  )
 
 puts "#{Post.count}"
