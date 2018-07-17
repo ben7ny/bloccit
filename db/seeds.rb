@@ -20,6 +20,9 @@ require 'random_data'
 
 
 
+
+
+
 15.times do
    Topic.create!(
      name:         RandomData.random_sentence,
@@ -54,6 +57,14 @@ end
    password: 'helloworld',
    role:     'admin'
  )
+
+ moderator = User.create!(
+   name:     'Moderator User',
+   email:    'moderator@example.com',
+   password: 'hiworld',
+   role:     'moderator'
+ )
+
 
  member = User.create!(
    name:     'Member User',
