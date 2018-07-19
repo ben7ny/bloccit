@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_070249) do
-
-  create_table "advertisements", force: :cascade do |t|
-    t.string "title"
-    t.text "copy"
-    t.integer "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2018_07_18_160438) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "question_id"
@@ -45,7 +37,6 @@ ActiveRecord::Schema.define(version: 2018_07_11_070249) do
     t.datetime "updated_at", null: false
     t.integer "topic_id"
     t.integer "user_id"
-    t.float "rank"
     t.index ["topic_id"], name: "index_posts_on_topic_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -83,16 +74,6 @@ ActiveRecord::Schema.define(version: 2018_07_11_070249) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role"
-  end
-
-  create_table "votes", force: :cascade do |t|
-    t.integer "value"
-    t.integer "user_id"
-    t.integer "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_votes_on_post_id"
-    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end
