@@ -60,13 +60,9 @@ RSpec.describe UsersController, type: :controller do
       end
    end
 
+   describe "GET show" do
 
-   describe "not signed in" do
      let(:factory_user) { create(:user) }
-
-     before do
-       post :create, params: { user: new_user_attributes }
-     end
 
      it "returns http success" do
        get :show, params: { id: factory_user.id }
@@ -82,6 +78,7 @@ RSpec.describe UsersController, type: :controller do
        get :show, params: { id: factory_user.id }
        expect(assigns(:user)).to eq(factory_user)
      end
+
    end
 
 end
