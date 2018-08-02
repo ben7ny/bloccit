@@ -31,29 +31,29 @@ before_action :authorize_user, except: [:show, :new, :create]
 
 
   def update
-       @post = Post.find(params[:id])
-       @post.assign_attributes(post_params)
+    @post = Post.find(params[:id])
+    @post.assign_attributes(post_params)
 
-       if @post.save
-         flash[:notice] = "Post was updated."
-         redirect_to [@post.topic, @post]
-       else
-         flash.now[:alert] = "There was an error saving the post. Please try again."
-         render :edit
-       end
-     end
+    if @post.save
+      flash[:notice] = "Post was updated."
+      redirect_to [@post.topic, @post]
+    else
+      flash.now[:alert] = "There was an error saving the post. Please try again."
+      render :edit
+    end
+  end
 
-     def destroy
-     @post = Post.find(params[:id])
+  def destroy
+    @post = Post.find(params[:id])
 
-     if @post.destroy
-       flash[:notice] = "\"#{@post.title}\" was deleted successfully."
-       redirect_to @post.topic
-     else
-       flash.now[:alert] = "There was an error deleting the post."
-       render :show
-     end
+    if @post.destroy
+      flash[:notice] = "\"#{@post.title}\" was deleted successfully."
+      redirect_to @post.topic
+    else
+      flash.now[:alert] = "There was an error deleting the post."
+      render :show
    end
+  end
 
    private
    def post_params
